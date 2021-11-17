@@ -64,8 +64,7 @@ def upload_items(output, auth):
 
 
 def convert_date(date):
-    date_str = " ".join(date.split(" ")[1:4])
-    return datetime.strptime(date_str, "%d %b %Y")
+    return datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
 
 
 def convert_phone_numbers(number:str):
