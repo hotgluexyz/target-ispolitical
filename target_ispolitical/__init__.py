@@ -229,6 +229,7 @@ def upload(config, args):
         logger.info("Found contributions.json, uploading...")
         contributions = load_json(input_path)
         contributions = convert_contribution(contributions)
+        logger.info(f"CONTRIBUTIONS PAYLOAD: {contributions}")
         upload_items(contributions, auth)
         logger.info("contributions.json uploaded!")
 
@@ -239,7 +240,8 @@ def upload(config, args):
         logger.info("Found refunds.json, uploading...")
         refunds = load_json(input_path)
         refunds = convert_contribution(refunds, "Refunded Contribution")
-        upload_items(contributions, auth)
+        logger.info(f"REFUNDS PAYLOAD: {refunds}")
+        upload_items(refunds, auth)
         logger.info("refunds.json uploaded!")
     
     # Upload Payouts
@@ -250,7 +252,7 @@ def upload(config, args):
         payouts = convert_payout(payouts)
         
         for payout in payouts:
-            logger.info(payout)
+            logger.info(f"PAYOUT PAYLOAD: {payout}")
             r = requests.post(ENDPOINT, auth=auth, json=payout['Fees'])
             logger.info(r.text)
             if r.status_code==201:
