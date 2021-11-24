@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='target-ispolitical',
-    version='1.1.2',
+    version='1.1.3',
     description='hotglue target for exporting data to ISPolitical API',
     author='hotglue',
     url='https://hotglue.xyz',
