@@ -252,10 +252,11 @@ def upload(config, args):
         payouts = convert_payout(payouts)
         
         for payout in payouts:
-            logger.info(f"PAYOUT PAYLOAD: {payout}")
+            logger.info(f"PAYOUT FEES PAYLOAD: {payout['Fees']}")
             r = requests.post(ENDPOINT, auth=auth, json=payout['Fees'])
             logger.info(r.text)
             if r.status_code==201:
+                logger.info(f"PAYOUT DEPOSIT PAYLOAD: {payout['Deposit']}")
                 r = requests.post(ENDPOINT, auth=auth, json=payout['Deposit'])
                 logger.info(r.text)
         logger.info("payouts.json uploaded!")
