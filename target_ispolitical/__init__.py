@@ -208,10 +208,10 @@ def convert_payout(input: list):
                     Date=payout["date"].strftime("%Y-%m-%d"),
                     NoteForInternal=payout["destination"],
                     TransactionType="Deposit",
-                    UniqueIdentifier="-".join(["NUMERO-PAYOUT", payout["id"]])
+                    UniqueIdentifier="-".join(["NUMERO-PAYOUT", payout["id"]]),
+                    Items=items
                 )
-            ],
-            Items=items
+            ]
         )
         output = dict(
             Fees=fees,
