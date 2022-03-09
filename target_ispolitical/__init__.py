@@ -68,6 +68,9 @@ def convert_date(date):
 
 
 def convert_phone_numbers(number:str):
+    if number is None:
+        return None
+
     phone = phonenumbers.parse(number, None)
     number = phonenumbers.format_number(phone, 2)
     return f"+1 {number}"
